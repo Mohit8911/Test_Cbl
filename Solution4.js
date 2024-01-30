@@ -1,20 +1,17 @@
 async function getApiData() {
-  var apiData = await fetch("https://jsonplaceholder.typicode.com/posts")
-    .then((data) => data.json())
-    .catch((err) => console.log("Error::",err));
+  var response = await fetch("https://jsonplaceholder.typicode.com/posts")  // Api fetch request
+    .then((data) => data.json())                                            //convert raw data to json format
+    .catch((err) => console.log("Error:", err));                          // Throw Error
 
-    if (apiData) {
+  if (response) {                                          // If we got the response
     var reqData = [];
     for (let i = 0; i < 5; i++) {
-      reqData.push(apiData[i].title);
+      reqData.push(response[i].title);   // Adding titles from response data into new array 
     }
-}
+  }
   return reqData;
 }
 
-async function a() {
-  let reqData = await getApiData();
-  console.log(reqData);
-}
-
-a();
+getApiData().then((data) => {
+  console.log(data);
+});

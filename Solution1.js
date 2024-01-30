@@ -4,7 +4,7 @@ console.log(sumOfPositives(arr));
 function sumOfPositives(arr) {
   let sum = 0;
   arr.forEach((element) => {
-    if (element > 0) {
+    if (element > 0) {          // condition check
       sum += element;
     }
   });
